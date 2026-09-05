@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- 🔴2026-09-04 ヨコヨコの薫子さんの報告「なんで日本語になる？」——iPhoneの
+     Safariがページを丸ごと機械翻訳していた（STEMSが「茎」、EXPORTが「輸出」）。
+     lang="en"とだけ書いてあり「訳さないで」の指定が無かったため。
+     translate="no" と notranslate の2つで、Safari・Chrome双方の自動翻訳を止める -->
+<html lang="en" translate="no" class="notranslate">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="google" content="notranslate" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- ⚠️2026-08-26に書いたこの3行の指定は**効かなかった**（2026-08-27に実測）。
+         HTMLの中に書くこの形の指定は、ブラウザのキャッシュ判断では無視される。
+         配信先（GitHub Pages）は必ず`max-age=600`を付けてくるので、**この紙は
+         10分間使い回される**＝直しが最大10分届かない。ヘッダーは変えられない。
+         → **アプリ本体が自分で新しい版を見つけて入れ替わる**形にした
+         （App.tsxの「新しい版が出ていないか見張る」節）。ここは残しても害は
+         無いが、効くと誤解しないよう理由ごと残す -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>4tr</title>
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+        /* ⚠️2026-08-29 Rさん報告「読み込んだ直後、下に白い部分が出る」で追加。
+           html/bodyに背景色の指定が元々無く、JSが読み込まれてReactが
+           ダークな盤面を描くまでの一瞬（特に本体の高さが画面より低い場合は
+           そのまま）ブラウザ既定の白が見えていた。theme-colorの#08080aは
+           アドレスバーの色にしか効かず、ページ自体の地色は別に指定が要る */
+        background-color: #08080a;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+    <!-- ⚠️2026-08-15 Rさん質問「ホーム画面に保存した時にアイコンが出るようになってる？」
+         で判明：Web版（GitHub Pagesのテスト配布）はExpoの標準テンプレートのままで、
+         favicon.ico以外の「ホーム画面に追加」用の設定（apple-touch-icon・manifest）
+         が一切無かった。iOSでホーム画面に追加すると、アプリのアイコンではなく
+         その時開いていたページのスクリーンショットが使われ、名前も「fourtr-app」の
+         ままになる。ネイティブ版はTestFlight/開発ビルド経由でこの問題と無関係
+         （assets/icon.pngがそのまま使われる）——影響するのはWeb版のみ */
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="4tr" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#08080a">
+<link rel="icon" href="/fourtr-web/favicon.ico" /></head>
+
+  <body class="notranslate" translate="no">
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+  <script src="/fourtr-web/_expo/static/js/web/index-1c198310168c95963c5d7c23f1a76814.js" defer></script>
+</body>
+</html>
