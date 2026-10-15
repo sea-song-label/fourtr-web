@@ -41,6 +41,16 @@
         height: 100%;
         flex: 1;
       }
+      #boot-loading {
+        margin: auto;
+        color: #8a8f99;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2.4px;
+        animation: boot-pulse 1.4s ease-in-out infinite;
+      }
+      @keyframes boot-pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
     </style>
     <!-- ⚠️2026-08-15 Rさん質問「ホーム画面に保存した時にアイコンが出るようになってる？」
          で判明：Web版（GitHub Pagesのテスト配布）はExpoの標準テンプレートのままで、
@@ -64,7 +74,11 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <!-- The root element for your Expo app. -->
-    <div id="root"></div>
-  <script src="/fourtr-web/_expo/static/js/web/index-24175da690b01b922f4e07bb8ec32f66.js" defer></script>
+    <!-- 2026-10-16 Rさん「ウェブ版開いたら数秒かもしれないけど真っ暗な画面だった」
+         「NOW loadingみたいな言葉を出せない？」：本体のJS（約1.7MB）が届くまで
+         #rootが空で、地色の黒だけが見えていた。#rootの中に文字を置いておけば、
+         Reactが最初に描いたときに中身ごと置き換わるので、消す処理は要らない -->
+    <div id="root"><div id="boot-loading">NOW LOADING</div></div>
+  <script src="/fourtr-web/_expo/static/js/web/index-f911f678797198e9de69e614560e7c77.js" defer></script>
 </body>
 </html>
